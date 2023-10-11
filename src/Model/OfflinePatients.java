@@ -22,6 +22,10 @@ public class OfflinePatients implements Patient {
         System.out.println("My Illness is "+ patientIllness);
         System.out.println("My bed number is "+ bedNumber);
     }
+
+    public String pId(){
+        return pId;
+    }
     public void getMyBedNumber(){
         System.out.println(bedNumber);
     }

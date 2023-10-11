@@ -30,4 +30,8 @@ public class OfflineDoctors implements Doctor {
         System.out.println("My age is "+ docAge);
 
     }
+
+    public String docId(){
+        return docId;
+    }
 }

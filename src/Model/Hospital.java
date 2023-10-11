@@ -1,16 +1,26 @@
 package Model;
 
+import Database.DoctorDB;
+import Database.PatientDB;
+import Model.Interfaces.Doctor;
+
 public class Hospital {
     String hospitalName;
     int totalBeds;
     String hospitalAddress;
     int hospitalPhoneNumber;
 
+    DoctorDB doctorDatabase;
+
+    PatientDB patientDatabase;
+
     public Hospital(String hospitalName, int totalBeds, String hospitalAddress, int hospitalPhoneNumber) {
         this.hospitalName = hospitalName;
         this.totalBeds = totalBeds;
         this.hospitalAddress = hospitalAddress;
         this.hospitalPhoneNumber = hospitalPhoneNumber;
+        doctorDatabase = new DoctorDB();
+        patientDatabase = new PatientDB();
     }
 
     public void getHospitalName() {
@@ -45,6 +55,9 @@ public class Hospital {
 
     }
     public void appointDoctor(String doctorName, String doctorDegree, int doctorAge, String doctorSpeciality) {
-
+        int totalDocs = doctorDatabase.getTotalDocs();
+        String docId = "HSP" + (totalDocs+1);
+        Doctor doc = new OfflineDoctors(docId, doctorName, doctorDegree, doctorSpeciality, doctorAge);
+        doctorDatabase.addDoctorToDB(doc);
     }
 }
